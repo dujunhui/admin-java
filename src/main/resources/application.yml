@@ -1,0 +1,30 @@
+datasource:
+  mysql:
+    url: jdbc:mysql://47.96.12.212:3306/dujunhui?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+  sqlserver:
+    url: jdbc:jtds:sqlserver://192.168.161.70:1433;databaseName=dishaws20181010
+    username: sa
+    password: dsyyjtwjs00
+    driver-class-name: net.sourceforge.jtds.jdbc.Driver
+    validation-query: select 1
+server:
+  port: 8880
+
+#图片上传的位置
+file:
+  localUploadPath: C:\\webSite\\DUJUNHUI_vue\\
+
+#spring:
+#  mvc:
+#    view:
+#      suffix: .html
+#      prefix: /
+
