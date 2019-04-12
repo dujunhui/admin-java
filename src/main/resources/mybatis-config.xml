@@ -48,6 +48,7 @@
 <!-- 别名定义 -->
 <typeAliases>
 	<typeAlias alias="User" type="com.djh.admin.model.User" />
+	<typeAlias alias="SysUser" type="com.djh.admin.model.SysUser" />
 </typeAliases>
 
 <!--&lt;!&ndash;自定义类型处理器 &ndash;&gt;-->

@@ -1,4 +1,4 @@
-package com.djh.admin.config.db.sqlserver;
+package com.djh.admin.config.db.sqlserver2;
 
 import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
@@ -21,15 +21,14 @@ import java.sql.SQLException;
 
 @Component
 @Configuration
-@MapperScan(basePackages = "com.djh.admin.dao.sqlserver", sqlSessionFactoryRef = "sqlServerSqlSessionFactory")
+@MapperScan(basePackages = "com.djh.admin.dao.sqlserver2", sqlSessionFactoryRef = "sqlServer2SqlSessionFactory")
 @Slf4j
-public class SqlServerDataSourceConfig {
+public class SqlServer2DataSourceConfig {
     @Autowired
-    private SqlServerDBProperties dbProperties;
+    private SqlServer2DBProperties dbProperties;
 
-    @Bean(name = "sqlServerDataSource")
-    @Primary
-    public DataSource sqlServerDataSource() {
+    @Bean(name = "sqlServer2DataSource")
+    public DataSource sqlServer2DataSource() {
         DruidXADataSource dataSource = new DruidXADataSource();
         dataSource.setDriverClassName(dbProperties.getDriverClassName());
         dataSource.setUrl(dbProperties.getUrl());
@@ -44,17 +43,16 @@ public class SqlServerDataSourceConfig {
         dataSource.setPassword(dbProperties.getPassword());
         AtomikosDataSourceBean atomikosDataSource = new AtomikosDataSourceBean();
         atomikosDataSource.setXaDataSource(dataSource);
-        atomikosDataSource.setUniqueResourceName("sqlServerDataSource");
+        atomikosDataSource.setUniqueResourceName("sqlServer2DataSource");
         return atomikosDataSource;
     }
 
-    @Bean(name = "sqlServerSqlSessionFactory")
-    @Primary
-    public SqlSessionFactory sqlServerSqlSessionFactory(@Qualifier("sqlServerDataSource") DataSource sqlServerDataSource) throws Exception {
+    @Bean(name = "sqlServer2SqlSessionFactory")
+    public SqlSessionFactory sqlServerSqlSessionFactory(@Qualifier("sqlServer2DataSource") DataSource sqlServer2DataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(sqlServerDataSource);
+        sessionFactory.setDataSource(sqlServer2DataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("/mapper/sqlserver/*.xml"));
+        sessionFactory.setMapperLocations(resolver.getResources("/mapper/sqlserver2/*.xml"));
         sessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
         return sessionFactory.getObject();
     }
@@ -66,9 +64,8 @@ public class SqlServerDataSourceConfig {
 //        return new DataSourceTransactionManager(sqlServerDataSource);
 //    }
 
-    @Bean(name="test1SqlSessionTemplate")
-    @Primary
-    public SqlSessionTemplate test1SqlSessionTemplate(@Qualifier("sqlServerSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name="test2SqlSessionTemplate")
+    public SqlSessionTemplate test2SqlSessionTemplate(@Qualifier("sqlServer2SqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

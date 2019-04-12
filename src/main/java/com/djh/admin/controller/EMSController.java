@@ -35,7 +35,7 @@ public class EMSController {
         String format = "json";
         String app_key = "ff3edb9e3ccd5329128e00e69b08c452";
         String charset = "UTF-8";
-        String authorization = "e5751eb89b6760ba146e786fc2926367"; // 授权码
+        String authorization = "643d4e83dc997087e841b9a65e302150"; // 授权码
         String appSecret = "1c70d09c96761e04f8f1c6d36e3cd007";
 
         Map<String, String> params = new HashMap<>() ;
@@ -50,13 +50,13 @@ public class EMSController {
 
         //接口级参数
         Map<String, Object> map1 = new HashMap<>();
-        map1.put("txLogisticID", "lyz220160318101530");
+//        map1.put("txLogisticID", "lyz220160318101530");
         map1.put("mailNum", "11098991333199");
         map1.put("orderType", 3);
         map1.put("serviceType", 0);
-        map1.put("insuredAmount", 1200);
-        map1.put("revertMailNo", "1109899133133");
-        map1.put("postage", 2200);
+//        map1.put("insuredAmount", 1200);
+//        map1.put("revertMailNo", "1109899133133");
+//        map1.put("postage", 2200);
 
         Map<String, Object> sender = new HashMap<>();
         sender.put("name","寄件人");
@@ -96,13 +96,13 @@ public class EMSController {
 
 //map2
         Map<String, Object> map2 = new HashMap<>();
-        map2.put("txLogisticID", "lyz220160318101530");
+//        map2.put("txLogisticID", "lyz220160318101530");
         map2.put("mailNum", "11098991333199");
         map2.put("orderType", 3);
         map2.put("serviceType", 0);
-        map2.put("insuredAmount", 1200);
-        map2.put("revertMailNo", "1109899133133");
-        map2.put("postage", 2200);
+//        map2.put("insuredAmount", 1200);
+//        map2.put("revertMailNo", "1109899133133");
+//        map2.put("postage", 2200);
 
         Map<String, Object> sender2 = new HashMap<>();
         sender2.put("name","寄件人");

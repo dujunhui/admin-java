@@ -44,11 +44,11 @@ public class ExcelController {
      */
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult importExcel(@RequestParam(value = "excelFile", required = false) MultipartFile file, HttpServletRequest request) {
+    public CommonResult importExcel(@RequestParam(value = "file", required = true) MultipartFile excelFile) {
         CommonResult commonResult = CommonResultFactory.failed();
         try {
-            MultipartRequest multipartRequest = (MultipartRequest) request;
-            MultipartFile excelFile = multipartRequest.getFile("excelFile");
+//            MultipartRequest multipartRequest = (MultipartRequest) request;
+//            MultipartFile excelFile = multipartRequest.getFile("excelFile");
             if(excelFile!=null){
                 String filename = excelFile.getOriginalFilename();
                 String suffix = filename.substring(filename.lastIndexOf("."),filename.length());

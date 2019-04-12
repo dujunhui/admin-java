@@ -66,7 +66,8 @@ public class ExcelUtil {
         response.reset();
         response.setContentType("application/x-msdownload");
         fileName = fileName + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        response.setHeader("Content-disposition","attachment; filename="+new String(fileName.getBytes("gb2312"),"ISO-8859-1")+".xls");
+        String str = new String(fileName.getBytes("gb2312"), "ISO-8859-1") + ".xls";
+        response.setHeader("Content-disposition","attachment; filename="+str);
         ServletOutputStream outStream=null;
         log.info("start to save excel: " + fileName);
         try{

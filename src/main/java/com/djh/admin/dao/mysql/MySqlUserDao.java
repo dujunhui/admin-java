@@ -17,4 +17,7 @@ public interface MySqlUserDao {
 
     // 设置user表里的name字段
     Integer setUserName(@Param("id") Integer id, @Param("name") String name);
+
+    // 批量插入user表
+    Integer batchInsert(List<User> list);
 }

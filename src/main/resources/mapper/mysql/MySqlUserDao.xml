@@ -10,4 +10,10 @@
         update user set name = #{name} where id = #{id}
     </update>
 
+    <insert id="batchInsert" parameterType="java.util.List">
+      insert into user (name, age, regTime, price) values
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            ( #{item.name}, #{item.age}, #{item.regTime}, #{item.price} )
+        </foreach >
+    </insert>
 </mapper>

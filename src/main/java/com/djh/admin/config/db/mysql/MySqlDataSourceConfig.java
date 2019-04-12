@@ -1,6 +1,7 @@
 package com.djh.admin.config.db.mysql;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,25 +34,18 @@ public class MySqlDataSourceConfig {
 
     @Bean(name = "mySqlDataSource")
     public DataSource mySqlDataSource() {
-        //DruidDataSource属性配置  https://www.cnblogs.com/SummerinShire/p/5828888.html
-//        DruidDataSource dataSource = new DruidDataSource();
-//        dataSource.setDriverClassName(dbProperties.getDriverClassName());
-//        dataSource.setUrl(dbProperties.getUrl());
-//        dataSource.setUsername(dbProperties.getUsername());
-//        dataSource.setPassword(dbProperties.getPassword());
-        //return dataSource;
 
-        MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
-        mysqlXADataSource.setUrl(dbProperties.getUrl());
-        mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
-        mysqlXADataSource.setPassword(dbProperties.getPassword());
-        mysqlXADataSource.setUser(dbProperties.getUsername());
-        mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
+        DruidXADataSource dataSource = new DruidXADataSource();
+        dataSource.setDriverClassName(dbProperties.getDriverClassName());
+        dataSource.setUrl(dbProperties.getUrl());
+        dataSource.setUsername(dbProperties.getUsername());
+        dataSource.setPassword(dbProperties.getPassword());
 
-        AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();
-        atomikosDataSourceBean.setXaDataSource(mysqlXADataSource);
-        atomikosDataSourceBean.setUniqueResourceName("mySqlDataSource");
-        return atomikosDataSourceBean;
+        AtomikosDataSourceBean atomikosDataSource = new AtomikosDataSourceBean();
+        atomikosDataSource.setXaDataSource(dataSource);
+        atomikosDataSource.setUniqueResourceName("mySqlDataSource");
+        atomikosDataSource.setTestQuery("SELECT 1");
+        return atomikosDataSource;
     }
 
     @Bean(name = "mySqlSqlSessionFactory")
@@ -70,10 +64,9 @@ public class MySqlDataSourceConfig {
 //        return new DataSourceTransactionManager(mySqlDataSource);
 //    }
 
-    @Primary
-    @Bean(name="test1SqlSessionTemplate")
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mySqlSqlSessionFactory")
-                                                             SqlSessionFactory sqlSessionFactory) {
+
+    @Bean(name="testSqlSessionTemplate")
+    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mySqlSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

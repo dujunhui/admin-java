@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class TimedTask {
-    //每0.5秒
-    @Scheduled(cron = "0/5 * * * * ?")
+    // 每隔5秒执行一次："*/5 * * * * ?"
+    // 每隔1分钟执行一次
+    @Scheduled(cron = "0 */30 * * * ?")
     public void go(){
         log.info("定时任务......");
     }

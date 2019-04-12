@@ -34,7 +34,6 @@ public class EMSService {
             }
         }
         Collections.sort(keyList, new Comparator<String>() {
-
             @Override
             public int compare(String o1, String o2) {
                 int length = Math.min(o1.length(), o2.length());
@@ -52,6 +51,7 @@ public class EMSService {
                 return o1.length() - o2.length();
             }
         });
+
         //将参数和参数值按照排序顺序拼装成字符串
         for (int i = 0; i < keyList.size(); i++) {
             String key = keyList.get(i);

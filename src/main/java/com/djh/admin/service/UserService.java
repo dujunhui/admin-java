@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,12 +66,19 @@ public class UserService {
     public Boolean insertUsers(List<List<String>> datas) {
         Boolean res = true;
         try {
+            List<User> list = new ArrayList<User>();
             for (int i = 0; i < datas.size(); i++) {
                 String[] str = datas.get(i).toArray(new String[0]);
+                User user = new User();
+                user.setName(str[1]);
+                user.setAge(Integer.valueOf(str[2]));
+                user.setPrice(new BigDecimal(str[3]));
+                user.setRegTime(new Timestamp(System.currentTimeMillis()));
+                list.add(user);
             }
+            mySqlUserDao.batchInsert(list);
         }catch (Exception e){
             log.error(e.getMessage());
-            res = false;
             throw new RuntimeException(e.getMessage()); //在这儿抛异常，事务回滚
         }
         return res;
