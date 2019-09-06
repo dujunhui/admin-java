@@ -49,6 +49,7 @@
 <typeAliases>
 	<typeAlias alias="User" type="com.djh.admin.model.User" />
 	<typeAlias alias="SysUser" type="com.djh.admin.model.SysUser" />
+	<typeAlias alias="Xsfpmx" type="com.djh.admin.model.Xsfpmx" />
 </typeAliases>
 
 <!--&lt;!&ndash;自定义类型处理器 &ndash;&gt;-->

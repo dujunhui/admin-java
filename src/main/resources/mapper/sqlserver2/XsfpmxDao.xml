@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djh.admin.dao.sqlserver2.XsfpmxDao">
+
+    <resultMap type="com.djh.admin.model.Xsfpmx" id="XsfpmxMap">
+        <result property="djnm" column="单据内码"  jdbcType="VARCHAR"/>
+        <result property="cpdm" column="产品代码"  jdbcType="VARCHAR"/>
+        <result property="cpmc" column="产品名称"  jdbcType="VARCHAR"/>
+        <result property="num" column="数量"  jdbcType="VARCHAR"/>
+        <result property="xh" column="型号"  jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllXsfpmx" resultMap="XsfpmxMap">
+        SELECT TOP(2) * FROM dbo.vw_xsfpmx WHERE 产品名称 IS NOT NULL AND 型号 IS NOT NULL
+    </select>
+</mapper>

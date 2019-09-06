@@ -16,7 +16,7 @@ datasource:
     driver-class-name: net.sourceforge.jtds.jdbc.Driver
     validation-query: select 1
   sqlserver2:
-    url: jdbc:jtds:sqlserver://192.168.161.70:1433;databaseName=dishaws20190226
+    url: jdbc:jtds:sqlserver://192.168.161.9:1433;databaseName=dishaerm2018-12-02;instance=MSSQL2008R2;allowMultiQueries=true
     username: sa
     password: dsyyjtwjs00
     driver-class-name: net.sourceforge.jtds.jdbc.Driver

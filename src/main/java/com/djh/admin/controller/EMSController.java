@@ -2,7 +2,7 @@ package com.djh.admin.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.djh.admin.service.EMSService;
-import com.djh.admin.uitls.HttpPost;
+import com.djh.admin.uitls.HttpPostEMS;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -155,7 +155,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("size", "2"));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
             log.info(output);
             return output;
         }catch (Exception e){
@@ -216,7 +216,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("county", "环翠区"));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
            log.info(output);
            return output;
         }catch (Exception e){
@@ -279,7 +279,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("detailInfo", "青岛南路1号"));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
             log.info(output);
             return output;
         }catch (Exception e){
@@ -343,7 +343,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("addressDesc", "000"));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
             log.info(output);
             return output;
         }catch (Exception e){
@@ -429,7 +429,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("size", "2"));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
             log.info(output);
             return output;
         }catch (Exception e){
@@ -488,7 +488,7 @@ public class EMSController {
         nvps.add(new BasicNameValuePair("customerCode", customerCode));
 
         try {
-            String output = HttpPost.sendPost(url, nvps);
+            String output = HttpPostEMS.sendPost(url, nvps);
             log.info(output);
             return output;
         }catch (Exception e){

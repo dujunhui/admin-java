@@ -23,7 +23,7 @@ public class LoginHandler implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        boolean flag = true;
+        boolean flag;
         String token = request.getHeader("X-Token");
         response.setHeader("Content-type", "text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

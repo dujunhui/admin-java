@@ -15,7 +15,7 @@ import static org.apache.http.impl.client.HttpClients.createDefault;
 /**
  * Created by Administrator on 2019/2/18.
  */
-public class HttpPost {
+public class HttpPostEMS {
     public static String sendPost(String url, List<NameValuePair> nvps) throws Exception {
 
         HttpResponse response;
