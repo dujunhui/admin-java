@@ -23,7 +23,6 @@ public class LoginHandler implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        boolean flag;
         String token = request.getHeader("X-Token");
         response.setHeader("Content-type", "text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -31,25 +30,24 @@ public class LoginHandler implements HandlerInterceptor {
             //没有token
             response.getWriter().write("{\"code\":\"50009\",\"message\":\"没有身份验证，请登陆\",\"data\":null}");
             response.getWriter().flush();
-            flag = false;
+            return false;
         }
         if(!JwtToken.ifExp(token)){
             //token中的exp过期
             response.getWriter().write("{\"code\":\"50014\",\"message\":\"登录状态过期，请重新登录\",\"data\":null}");
             response.getWriter().flush();
-            flag = false;
+            return false;
         }
         //根据key查看redis中的token是否相等
         Long sysUid = JwtToken.getAppUID(token);
         String rediesToken = String.valueOf(redisUtil.get(sysuserkey + sysUid.toString()));
         if(token.equals(rediesToken)){
-            flag = true;
+            return true;
         }else{
             response.getWriter().write("{\"code\":\"50008\",\"message\":\"登录状态验证失败，请重新登录\",\"data\":null}");
             response.getWriter().flush();
-            flag = false;
+            return false;
         }
-        return flag;
     }
 
     //请求处理后调用

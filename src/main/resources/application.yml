@@ -31,7 +31,7 @@ server:
 
 #图片上传的位置
 file:
-  localUploadPath: C:\\webSite\\DUJUNHUI_vue\\
+  localUploadPath: D:\\WWW\\vue-admin-template\\
 
 spring:
   jta:
