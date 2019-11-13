@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +45,6 @@ public class ExcelController {
     public CommonResult importExcel(@RequestParam(value = "file", required = true) MultipartFile excelFile) {
         CommonResult commonResult = CommonResultFactory.failed();
         try {
-//            MultipartRequest multipartRequest = (MultipartRequest) request;
-//            MultipartFile excelFile = multipartRequest.getFile("excelFile");
             if(excelFile!=null){
                 String filename = excelFile.getOriginalFilename();
                 String suffix = filename.substring(filename.lastIndexOf("."),filename.length());

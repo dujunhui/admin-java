@@ -2,7 +2,6 @@ package com.djh.admin.controller;
 
 import com.djh.admin.model.Xsfpmx;
 import com.djh.admin.service.XsfpmxService;
-import com.djh.admin.uitls.HttpPostYD;
 
 import javax.jws.WebService;
 import javax.xml.rpc.ParameterMode;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 //import org.codehaus.xfire.client.Client;
 
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -110,7 +108,6 @@ public class YDController {
         }
 
     }
-
 
 
 }

@@ -3,6 +3,7 @@
 <configuration>
 <!-- 参数设置 -->
 <settings>
+	<!--解决，查询返回结果含null没有对应字段值问题，不加的话null的字段就会不显示-->
 	<setting name="callSettersOnNulls" value="true"/>
 	<!-- 这个配置使全局的映射器启用或禁用缓存 -->
 	<!--<setting name="cacheEnabled" value="true" />-->

@@ -15,4 +15,6 @@ public interface TestDao {
     List<Map<String, Object>> getTest();
 
     Integer setDaili(@Param("id") Integer id, @Param("name") String name);
+
+    Integer createTempByStr(@Param("tableName") String tableName);
 }

@@ -66,6 +66,12 @@ public class SqlServerDataSourceConfig {
 //        return new DataSourceTransactionManager(sqlServerDataSource);
 //    }
 
+    /**
+     * SqlSessionTemplate 是 SqlSession接口的实现类，是spring-mybatis中的，实现了SqlSession线程安全
+     *
+     * @param sqlSessionFactory
+     * @return
+     */
     @Bean(name="test1SqlSessionTemplate")
     @Primary
     public SqlSessionTemplate test1SqlSessionTemplate(@Qualifier("sqlServerSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {

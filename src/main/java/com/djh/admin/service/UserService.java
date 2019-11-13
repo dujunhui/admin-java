@@ -70,9 +70,9 @@ public class UserService {
             for (int i = 0; i < datas.size(); i++) {
                 String[] str = datas.get(i).toArray(new String[0]);
                 User user = new User();
-                user.setName(str[1]);
-                user.setAge(Integer.valueOf(str[2]));
-                user.setPrice(new BigDecimal(str[3]));
+                user.setName(str[0]);
+                user.setAge(Integer.valueOf(str[1]));
+                user.setPrice(new BigDecimal(str[2]));
                 user.setRegTime(new Timestamp(System.currentTimeMillis()));
                 list.add(user);
             }

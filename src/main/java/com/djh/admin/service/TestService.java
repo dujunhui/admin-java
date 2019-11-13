@@ -25,6 +25,9 @@ public class TestService {
 
     public List<Map<String, Object>> getTest(){ return testDao.getTest(); }
 
+    public Integer createTempByStr(String tableName){
+        return testDao.createTempByStr(tableName);
+    }
 
     @Transactional
     public Integer testShiWu(){

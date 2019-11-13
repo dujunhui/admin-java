@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import javax.sql.XADataSource;
+import java.io.IOException;
 
 /**
  * 从数据源配置
@@ -48,23 +49,28 @@ public class MySqlDataSourceConfig {
         return atomikosDataSource;
     }
 
+    /**
+     * 自定义sqlSessionFactory配置（因为没有用到MybatisAutoConfiguration自动配置类，需要手动配置）
+     * @param dataSource
+     * @return
+     * @throws Exception
+     */
     @Bean(name = "mySqlSqlSessionFactory")
-    public SqlSessionFactory mySqlSqlSessionFactory(@Qualifier("mySqlDataSource") DataSource mySqlDataSource) throws Exception {
+    public SqlSessionFactory mySqlSqlSessionFactory(@Qualifier("mySqlDataSource") DataSource dataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(mySqlDataSource);
+        sessionFactory.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sessionFactory.setMapperLocations(resolver.getResources("/mapper/mysql/*.xml"));
         sessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
         return sessionFactory.getObject();
     }
 
-    // 定义事务
-//    @Bean(name = "mysqlTransactionManager")
-//    public DataSourceTransactionManager mysqlTransactionManager(@Qualifier("mySqlDataSource") DataSource mySqlDataSource) {
-//        return new DataSourceTransactionManager(mySqlDataSource);
-//    }
-
-
+    /**
+     * SqlSessionTemplate 是 SqlSession接口的实现类，是spring-mybatis中的，实现了SqlSession线程安全
+     *
+     * @param sqlSessionFactory
+     * @return
+     */
     @Bean(name="testSqlSessionTemplate")
     public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mySqlSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);

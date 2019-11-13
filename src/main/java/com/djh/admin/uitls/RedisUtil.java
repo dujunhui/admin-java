@@ -16,13 +16,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 /**
- 14
  * Redis工具类
- 15
  * @author YUX
-16
  * @date   2018年6月7日
-17
  */
 
 @Component

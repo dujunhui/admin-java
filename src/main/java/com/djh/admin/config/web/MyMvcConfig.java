@@ -27,7 +27,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getLoginHandler())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/","/login/**","/EMS/**");
+                .excludePathPatterns("/","/login/**","/api/createTable","/EMS/**");
         super.addInterceptors(registry);
     }
 

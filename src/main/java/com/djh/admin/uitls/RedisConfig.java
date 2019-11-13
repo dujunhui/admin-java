@@ -19,15 +19,10 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- 15
  * redis配置类
- 16
  * @author YUX
-17
  * @date   2018年6月6日
-18
  *
-19
  */
 
 @Configuration

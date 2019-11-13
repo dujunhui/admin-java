@@ -57,13 +57,12 @@ public class SqlServer2DataSourceConfig {
         return sessionFactory.getObject();
     }
 
-//    // 定义事务
-//    @Bean(name = "sqlserverTransactionManager")
-//    @Primary
-//    public DataSourceTransactionManager sqlserverTransactionManager(@Qualifier("sqlServerDataSource") DataSource sqlServerDataSource) {
-//        return new DataSourceTransactionManager(sqlServerDataSource);
-//    }
-
+    /**
+     * SqlSessionTemplate 是 SqlSession接口的实现类，是spring-mybatis中的，实现了SqlSession线程安全
+     *
+     * @param sqlSessionFactory
+     * @return
+     */
     @Bean(name="test2SqlSessionTemplate")
     public SqlSessionTemplate test2SqlSessionTemplate(@Qualifier("sqlServer2SqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);

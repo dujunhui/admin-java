@@ -35,6 +35,14 @@ public class ApiController {
         return commonResult;
     }
 
+    @GetMapping("/createTable")
+    @ResponseBody
+    public CommonResult createTable(){
+        CommonResult commonResult = CommonResultFactory.success();
+        Integer person = testService.createTempByStr("##person");
+        return commonResult;
+    }
+
     //获取类别
     @GetMapping("/getCategory")
     @ResponseBody

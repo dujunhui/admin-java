@@ -11,6 +11,7 @@
 	<name>test</name>
 	<description>Demo project for Spring Boot</description>
 
+	<!--这个parent是springboot最最核心的引入，所有的配置都在里面，并且是springboot项目必须引入的。-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -39,6 +40,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Spring Boot Mybatis 依赖 -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -70,7 +72,7 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jta-atomikos -->
-		<!-- 处理多数据源 -->
+		<!-- jta  atomikos 分布式事务管理依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
@@ -115,7 +117,7 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-		<!-- easyPoi 导出excel-->
+		<!-- easyPoi 导出excel  报错已过时-->
 		<dependency>
 			<groupId>cn.afterturn</groupId>
 			<artifactId>easypoi-base</artifactId>
@@ -128,12 +130,7 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.6</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/jaxen/jaxen Xpath解析包-->
-		<dependency>
-			<groupId>jaxen</groupId>
-			<artifactId>jaxen</artifactId>
-			<version>1.1.6</version>
-		</dependency>
+
 
 		<!--WebService接口用到的库-->
 		<dependency>
@@ -153,6 +150,7 @@
 			<artifactId>httpcore</artifactId>
 			<version>4.4.8</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>

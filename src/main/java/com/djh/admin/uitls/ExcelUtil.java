@@ -20,6 +20,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,10 +65,14 @@ public class ExcelUtil {
      */
     public static void export(HttpServletResponse response, Workbook workbook, String fileName) throws Exception {
         response.reset();
-        response.setContentType("application/x-msdownload");
-        fileName = fileName + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String str = new String(fileName.getBytes("gb2312"), "ISO-8859-1") + ".xls";
-        response.setHeader("Content-disposition","attachment; filename="+str);
+        response.setContentType("application/x-msdownload;charset=UTF-8");
+        fileName = fileName + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".xls";
+        fileName = URLEncoder.encode(fileName, "UTF-8");
+        //response.setHeader("Content-Disposition", "attachment;filename="+fileName);
+
+        response.setHeader("FileName", fileName);
+//        String str = new String(fileName.getBytes("gb2312"), "ISO-8859-1") + ".xls";;
+//        response.setHeader("Content-disposition","attachment; filename="+str);
         ServletOutputStream outStream=null;
         log.info("start to save excel: " + fileName);
         try{
